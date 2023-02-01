@@ -1,0 +1,56 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+    branches: [ master ]
+
+jobs:
+
+  build_assets:
+
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Set up Go 1.x
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.15
+      id: go
+    - name: Check out code into the Go module directory
+      uses: actions/checkout@v2
+    - name: Get dependencies
+      run: |
+        go get -v -t -d ./...
+    - name: Build
+      run: |
+        chmod +x build.sh
+        ./build.sh
+    - name: Upload
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: |
+          cloudpan189-go-*-android-api16-386.zip
+          cloudpan189-go-*-android-api16-armv7.zip
+          cloudpan189-go-*-android-api21-amd64.zip
+          cloudpan189-go-*-android-api21-arm64.zip
+          cloudpan189-go-*-darwin-macos-amd64.zip
+          cloudpan189-go-*-darwin-macos-arm64.zip
+          cloudpan189-go-*-freebsd-386.zip
+          cloudpan189-go-*-freebsd-amd64.zip
+          cloudpan189-go-*-ios-arm64.zip
+          cloudpan189-go-*-linux-386.zip
+          cloudpan189-go-*-linux-amd64.zip
+          cloudpan189-go-*-linux-arm64.zip
+          cloudpan189-go-*-linux-armv5.zip
+          cloudpan189-go-*-linux-armv7.zip
+          cloudpan189-go-*-linux-mips.zip
+          cloudpan189-go-*-linux-mips64.zip
+          cloudpan189-go-*-linux-mips64le.zip
+          cloudpan189-go-*-linux-mipsle.zip
+          cloudpan189-go-*-windows-arm.zip
+          cloudpan189-go-*-windows-x64.zip
+          cloudpan189-go-*-windows-x86.zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
