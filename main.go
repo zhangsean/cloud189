@@ -4,7 +4,7 @@
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//     http://www.apache.org/licenses/LICENSE-2.0
+//	http://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
@@ -15,7 +15,6 @@ package main
 
 import (
 	"fmt"
-	"github.com/tickstep/cloudpan189-go/cmder"
 	"os"
 	"path"
 	"path/filepath"
@@ -24,6 +23,8 @@ import (
 	"strings"
 	"time"
 	"unicode"
+
+	"github.com/tickstep/cloudpan189-go/cmder"
 
 	"github.com/peterh/liner"
 	"github.com/tickstep/cloudpan189-go/cmder/cmdliner"
@@ -46,7 +47,7 @@ const (
 
 var (
 	// Version 版本号
-	Version = "v0.1.2"
+	Version = "v0.1.3"
 
 	historyFilePath = filepath.Join(config.GetConfigDir(), "cloud189_command_history.txt")
 
