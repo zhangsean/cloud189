@@ -22,16 +22,18 @@ Build() {
   echo "Building $1..."
   export GOOS=$2 GOARCH=$3 GO386=sse2 CGO_ENABLED=0 GOARM=$4
   if [ $2 = "windows" ]; then
-    goversioninfo -o=resource_windows_386.syso
-    goversioninfo -64 -o=resource_windows_amd64.syso
+    go version info -o=resource_windows_386.syso
+    go version info -64 -o=resource_windows_amd64.syso
     go build -ldflags "-X main.Version=$version -s -w" -o "$output/$name.exe"
   else
+    go clean
     go build -ldflags "-X main.Version=$version -s -w" -o "$output/$name"
   fi
 
-  echo "Build $1 successfully."
-  ls -lh
+  ls -lh $output
   Pack $1 $2
+  ls -lh
+  echo "Build $1 successfully."
 }
 
 # zip 打包
@@ -47,8 +49,6 @@ Pack() {
   # 删除
   rm -rf $output
 }
-
-ls -lh
 
 # OS X / macOS
 Build $name-$version"-darwin-macos-amd64" darwin amd64
