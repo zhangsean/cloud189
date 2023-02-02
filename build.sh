@@ -22,7 +22,7 @@ Build() {
   echo "Building $1..."
   export GOOS=$2 GOARCH=$3 GO386=sse2 CGO_ENABLED=0 GOARM=$4
   if [ $2 = "windows" ]; then
-    go install github.com/josephspurrier/goversioninfo/cmd/goversioninfo
+    go install github.com/josephspurrier/goversioninfo/cmd/goversioninfo@latest
     goversioninfo -o=resource_windows_386.syso
     goversioninfo -64 -o=resource_windows_amd64.syso
     go build -ldflags "-X main.Version=$version -s -w" -o "$output/$name.exe"
