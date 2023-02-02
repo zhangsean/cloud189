@@ -2,14 +2,14 @@
     "FixedFileInfo": {
         "FileVersion": {
             "Major": 0,
-            "Minor": 1,
-            "Patch": 3,
+            "Minor": 2,
+            "Patch": 1,
             "Build": 0
         },
         "ProductVersion": {
             "Major": 0,
-            "Minor": 1,
-            "Patch": 3,
+            "Minor": 2,
+            "Patch": 1,
             "Build": 0
         },
         "FileFlagsMask": "3f",
@@ -20,16 +20,16 @@
     },
     "StringFileInfo": {
         "Comments": "",
-        "CompanyName": "tickstep",
+        "CompanyName": "zhangsean",
         "FileDescription": "天翼云盘客户端",
-        "FileVersion": "v0.1.3",
+        "FileVersion": "v0.2.1",
         "InternalName": "",
-        "LegalCopyright": "© 2020 tickstep.",
+        "LegalCopyright": "© 2023 zhangsean",
         "LegalTrademarks": "",
         "OriginalFilename": "",
         "PrivateBuild": "",
         "ProductName": "cloud189",
-        "ProductVersion": "v0.1.3",
+        "ProductVersion": "v0.2.1",
         "SpecialBuild": ""
     },
     "VarFileInfo": {
@@ -39,5 +39,5 @@
         }
     },
     "IconPath": "assets/cloudpan189-go.ico",
-    "ManifestPath": "cloudpan189-go.exe.manifest"
+    "ManifestPath": "cloud189.exe.manifest"
 }

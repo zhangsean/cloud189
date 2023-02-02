@@ -22,7 +22,7 @@ Build() {
   echo "Building $1..."
   export GOOS=$2 GOARCH=$3 GO386=sse2 CGO_ENABLED=0 GOARM=$4
   if [ $2 = "windows" ]; then
-    go get github.com/josephspurrier/goversioninfo/cmd/goversioninfo
+    go install github.com/josephspurrier/goversioninfo/cmd/goversioninfo
     goversioninfo -o=resource_windows_386.syso
     goversioninfo -64 -o=resource_windows_amd64.syso
     go build -ldflags "-X main.Version=$version -s -w" -o "$output/$name.exe"
@@ -32,7 +32,6 @@ Build() {
 
   ls -lh $output
   Pack $1 $2
-  ls -lh
   echo "Build $1 successfully."
 }
 
@@ -100,3 +99,5 @@ Build $name-$version"-freebsd-amd64" freebsd amd64
 # Build $name-$version"-nacl-amd64p32" nacl amd64p32
 # Build $name-$version"-nacl-arm" nacl arm
 # Build $name-$version"-dragonflybsd-amd64" dragonfly amd64
+
+ls -lh
