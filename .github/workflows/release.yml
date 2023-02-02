@@ -4,6 +4,9 @@ on:
   release:
     types: [published]
     branches: [ master ]
+  push:
+    branches:
+      - master
 
 jobs:
 
@@ -25,7 +28,7 @@ jobs:
     - name: Build
       run: |
         chmod +x build.sh
-        ./build.sh ${{GITHUB_REF_NAME}}
+        ./build.sh `echo ${{ github.ref }} | awk -F/ '{print $3}'`
     - name: Upload
       uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
