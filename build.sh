@@ -13,13 +13,7 @@ fi
 
 output="out"
 
-default_golang() {
-  export GOROOT=/usr/local/go
-  go=$GOROOT/bin/go
-}
-
 Build() {
-  default_golang
   goarm=$4
   if [ "$4" = "" ]; then
     goarm=7
@@ -41,7 +35,6 @@ Build() {
 }
 
 AndroidBuild() {
-  default_golang
   echo "Building $1..."
   export GOOS=$2 GOARCH=$3 GOARM=$4 CGO_ENABLED=1
   $go build -ldflags "-X main.Version=$version -s -w -linkmode=external -extldflags=-pie" -o "$output/$1/$name"
@@ -51,7 +44,6 @@ AndroidBuild() {
 }
 
 IOSBuild() {
-  default_golang
   echo "Building $1..."
   mkdir -p "$output/$1"
   cd "$output/$1"
