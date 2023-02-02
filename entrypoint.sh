@@ -2,12 +2,12 @@
 set -e
 set -o pipefail
 
-if [ ! -e "cloud189_config.json" ]; then
+if [ ! -e /bin/cloud189_config.json ]; then
     if [ -n "$CLOUD189_USERNAME" -a -n "$CLOUD189_PASSWORD" ]; then
         cloud189 login -username="$CLOUD189_USERNAME" -password="$CLOUD189_PASSWORD"
     fi
 
-    if [ -n "$CLOUD189_SAVEDIR" && "$CLOUD189_SAVEDIR" != "/root/Downloads" ]; then
+    if [ -n "$CLOUD189_SAVEDIR" -a "$CLOUD189_SAVEDIR" != "/root/Downloads" ]; then
         cloud189 config set -savedir "$CLOUD189_SAVEDIR"
     fi
 
