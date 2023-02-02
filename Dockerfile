@@ -13,7 +13,7 @@ ENV CLOUD189_USERNAME= \
 ADD cloud189-*-linux-amd64.zip /tmp/
 
 RUN unzip /tmp/cloud189-*-linux-amd64.zip && \
-    mv cloud189-*-linux-amd64/cloud189 /bin/ && \
+    mv cloud189 /bin/ && \
     rm -rf cloud189*
 
 VOLUME [ "/root/Downloads" ]

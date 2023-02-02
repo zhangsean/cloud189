@@ -22,6 +22,7 @@ Build() {
   echo "Building $1..."
   export GOOS=$2 GOARCH=$3 GO386=sse2 CGO_ENABLED=0 GOARM=$4
   if [ $2 = "windows" ]; then
+    go get github.com/josephspurrier/goversioninfo/cmd/goversioninfo
     goversioninfo -o=resource_windows_386.syso
     goversioninfo -64 -o=resource_windows_amd64.syso
     go build -ldflags "-X main.Version=$version -s -w" -o "$output/$name.exe"
@@ -37,14 +38,22 @@ Build() {
 
 # zip 打包
 Pack() {
-  if [ $2 != "windows" ]; then
-      chmod +x "$output/$name"
+  if [ ! -d $output ]; then
+    return 1
   fi
 
-  cp README.md "$output"
+  ROOT=$PWD
+  cd $output
 
-  zip -q -r "$1.zip" $output
+  if [ $2 != "windows" ]; then
+      chmod +x "$name"
+  fi
 
+  cp ../README.md .
+
+  zip -q -r ../"$1.zip" *
+
+  cd $ROOT
   # 删除
   rm -rf $output
 }
