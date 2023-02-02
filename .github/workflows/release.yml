@@ -4,6 +4,9 @@ on:
   release:
     types: [published]
     branches: [ master ]
+  push:
+    branches:
+      - master
 
 permissions:
   contents: write
