@@ -70,6 +70,7 @@ jobs:
       with:
         files: |
           cloud189-${{ env.VERSION }}-darwin-macos-amd64.zip
+          cloud189-${{ env.VERSION }}-darwin-macos-arm64.zip
           cloud189-${{ env.VERSION }}-freebsd-386.zip
           cloud189-${{ env.VERSION }}-freebsd-amd64.zip
           cloud189-${{ env.VERSION }}-linux-386.zip
