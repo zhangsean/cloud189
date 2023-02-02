@@ -65,7 +65,7 @@ Build $name-$version"-linux-amd64" linux amd64
 # Build $name-$version"-linux-armv5" linux arm 5
 Build $name-$version"-linux-armv7" linux arm 7
 Build $name-$version"-linux-arm64" linux arm64
-# GOMIPS=softfloat Build $name-$version"-linux-mips" linux mips
+GOMIPS=softfloat Build $name-$version"-linux-mips" linux mips
 Build $name-$version"-linux-mips64" linux mips64
 # GOMIPS=softfloat Build $name-$version"-linux-mipsle" linux mipsle
 # Build $name-$version"-linux-mips64le" linux mips64le
