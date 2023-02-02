@@ -15,6 +15,7 @@ output="out"
 root=$pwd
 
 Build() {
+  cd $root
   goarm=$4
   if [ "$4" = "" ]; then
     goarm=7
@@ -30,12 +31,13 @@ Build() {
     go build -ldflags "-X main.Version=$version -s -w" -o "$output/$1/$name"
   fi
 
+  echo "Build $1 successfully."
+  ls -lh
   Pack $1 $2
 }
 
 # zip 打包
 Pack() {
-  cd $root
   if [ $2 != "windows" ]; then
       chmod +x "$output/$1/$name"
   fi
@@ -48,6 +50,8 @@ Pack() {
   # 删除
   rm -rf "$1"
 }
+
+ls -lh
 
 # OS X / macOS
 Build $name-$version"-darwin-macos-amd64" darwin amd64
