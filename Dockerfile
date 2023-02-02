@@ -12,7 +12,8 @@ ENV CLOUD189_USERNAME= \
 
 ADD cloud189-*-linux-amd64.zip /tmp/
 
-RUN unzip /tmp/cloud189-*-linux-amd64.zip && \
+RUN chmod +x /bin/entrypoint.sh && \
+    unzip /tmp/cloud189-*-linux-amd64.zip && \
     mv cloud189 /bin/ && \
     rm -rf cloud189*
 
