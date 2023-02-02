@@ -12,6 +12,7 @@ if [ "$1" = "" ]; then
 fi
 
 output="out"
+root=$pwd
 
 Build() {
   goarm=$4
@@ -34,6 +35,7 @@ Build() {
 
 # zip 打包
 Pack() {
+  cd $root
   if [ $2 != "windows" ]; then
       chmod +x "$output/$1/$name"
   fi
@@ -45,8 +47,6 @@ Pack() {
 
   # 删除
   rm -rf "$1"
-
-  cd ..
 }
 
 # OS X / macOS
