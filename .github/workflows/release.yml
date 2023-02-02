@@ -36,18 +36,14 @@ jobs:
       with:
         files: |
           cloud189-*-darwin-macos-amd64.zip
-          cloud189-*-darwin-macos-arm64.zip
           cloud189-*-freebsd-386.zip
           cloud189-*-freebsd-amd64.zip
           cloud189-*-linux-386.zip
           cloud189-*-linux-amd64.zip
           cloud189-*-linux-arm64.zip
-          cloud189-*-linux-armv5.zip
           cloud189-*-linux-armv7.zip
           cloud189-*-linux-mips.zip
           cloud189-*-linux-mips64.zip
-          cloud189-*-linux-mips64le.zip
-          cloud189-*-linux-mipsle.zip
           cloud189-*-windows-arm.zip
           cloud189-*-windows-x64.zip
           cloud189-*-windows-x86.zip
