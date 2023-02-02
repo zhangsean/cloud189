@@ -25,21 +25,16 @@ jobs:
     - name: Build
       run: |
         chmod +x build.sh
-        ./build.sh
+        ./build.sh ${{GITHUB_REF_NAME}}
     - name: Upload
       uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
       with:
         files: |
-          cloudpan189-go-*-android-api16-386.zip
-          cloudpan189-go-*-android-api16-armv7.zip
-          cloudpan189-go-*-android-api21-amd64.zip
-          cloudpan189-go-*-android-api21-arm64.zip
           cloudpan189-go-*-darwin-macos-amd64.zip
           cloudpan189-go-*-darwin-macos-arm64.zip
           cloudpan189-go-*-freebsd-386.zip
           cloudpan189-go-*-freebsd-amd64.zip
-          cloudpan189-go-*-ios-arm64.zip
           cloudpan189-go-*-linux-386.zip
           cloudpan189-go-*-linux-amd64.zip
           cloudpan189-go-*-linux-arm64.zip
