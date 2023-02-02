@@ -24,10 +24,10 @@ Build() {
   if [ $2 = "windows" ]; then
     goversioninfo -o=resource_windows_386.syso
     goversioninfo -64 -o=resource_windows_amd64.syso
-    $go build -ldflags "-X main.Version=$version -s -w" -o "$output/$1/$name.exe"
+    go build -ldflags "-X main.Version=$version -s -w" -o "$output/$1/$name.exe"
     RicePack $1 $name.exe
   else
-    $go build -ldflags "-X main.Version=$version -s -w" -o "$output/$1/$name"
+    go build -ldflags "-X main.Version=$version -s -w" -o "$output/$1/$name"
     RicePack $1 $name
   fi
 
@@ -37,7 +37,7 @@ Build() {
 AndroidBuild() {
   echo "Building $1..."
   export GOOS=$2 GOARCH=$3 GOARM=$4 CGO_ENABLED=1
-  $go build -ldflags "-X main.Version=$version -s -w -linkmode=external -extldflags=-pie" -o "$output/$1/$name"
+  go build -ldflags "-X main.Version=$version -s -w -linkmode=external -extldflags=-pie" -o "$output/$1/$name"
 
   RicePack $1 $name
   Pack $1 $2
@@ -48,7 +48,7 @@ IOSBuild() {
   mkdir -p "$output/$1"
   cd "$output/$1"
   export CC=/usr/local/go/misc/ios/clangwrap.sh GOOS=ios GOARCH=arm64 GOARM=7 CGO_ENABLED=1
-  $go build -ldflags "-X main.Version=$version -s -w" -o $name github.com/tickstep/cloudpan189-go
+  go build -ldflags "-X main.Version=$version -s -w" -o $name github.com/tickstep/cloudpan189-go
   jtool --sign --inplace --ent ../../entitlements.xml $name
   cd ../..
   RicePack $1 $name
