@@ -34,21 +34,21 @@ jobs:
       if: startsWith(github.ref, 'refs/tags/')
       with:
         files: |
-          cloudpan189-go-*-darwin-macos-amd64.zip
-          cloudpan189-go-*-darwin-macos-arm64.zip
-          cloudpan189-go-*-freebsd-386.zip
-          cloudpan189-go-*-freebsd-amd64.zip
-          cloudpan189-go-*-linux-386.zip
-          cloudpan189-go-*-linux-amd64.zip
-          cloudpan189-go-*-linux-arm64.zip
-          cloudpan189-go-*-linux-armv5.zip
-          cloudpan189-go-*-linux-armv7.zip
-          cloudpan189-go-*-linux-mips.zip
-          cloudpan189-go-*-linux-mips64.zip
-          cloudpan189-go-*-linux-mips64le.zip
-          cloudpan189-go-*-linux-mipsle.zip
-          cloudpan189-go-*-windows-arm.zip
-          cloudpan189-go-*-windows-x64.zip
-          cloudpan189-go-*-windows-x86.zip
+          cloud189-*-darwin-macos-amd64.zip
+          cloud189-*-darwin-macos-arm64.zip
+          cloud189-*-freebsd-386.zip
+          cloud189-*-freebsd-amd64.zip
+          cloud189-*-linux-386.zip
+          cloud189-*-linux-amd64.zip
+          cloud189-*-linux-arm64.zip
+          cloud189-*-linux-armv5.zip
+          cloud189-*-linux-armv7.zip
+          cloud189-*-linux-mips.zip
+          cloud189-*-linux-mips64.zip
+          cloud189-*-linux-mips64le.zip
+          cloud189-*-linux-mipsle.zip
+          cloud189-*-windows-arm.zip
+          cloud189-*-windows-x64.zip
+          cloud189-*-windows-x86.zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

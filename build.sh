@@ -4,7 +4,7 @@
 # for macOS & linux, run this command in shell
 # ./build.sh v0.1.0
 
-name="cloudpan189-go"
+name="cloud189"
 version=$1
 
 if [ "$1" = "" ]; then
@@ -12,10 +12,8 @@ if [ "$1" = "" ]; then
 fi
 
 output="out"
-root=$pwd
 
 Build() {
-  cd $root
   goarm=$4
   if [ "$4" = "" ]; then
     goarm=7
@@ -26,9 +24,9 @@ Build() {
   if [ $2 = "windows" ]; then
     goversioninfo -o=resource_windows_386.syso
     goversioninfo -64 -o=resource_windows_amd64.syso
-    go build -ldflags "-X main.Version=$version -s -w" -o "$output/$1/$name.exe"
+    go build -ldflags "-X main.Version=$version -s -w" -o "$output/$name.exe"
   else
-    go build -ldflags "-X main.Version=$version -s -w" -o "$output/$1/$name"
+    go build -ldflags "-X main.Version=$version -s -w" -o "$output/$name"
   fi
 
   echo "Build $1 successfully."
@@ -39,16 +37,15 @@ Build() {
 # zip 打包
 Pack() {
   if [ $2 != "windows" ]; then
-      chmod +x "$output/$1/$name"
+      chmod +x "$output/$name"
   fi
 
-  cp README.md "$output/$1"
+  cp README.md "$output"
 
-  cd $output
-  zip -q -r "$1.zip" "$1"
+  zip -q -r "$1.zip" $output
 
   # 删除
-  rm -rf "$1"
+  rm -rf $output
 }
 
 ls -lh
